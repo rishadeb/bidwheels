@@ -36,10 +36,11 @@ public static class Config
                 ClientSecrets = {new Secret("secret".Sha256())},
                 AllowedGrantTypes = GrantTypes.CodeAndClientCredentials, // token used by server side not browser client
                 RequirePkce = false,
-                RedirectUris = {"https://localhost:3000/api/auth/callback/id-server"},
+                RedirectUris = {"http://localhost:3000/api/auth/callback/id-server"},
                 AllowOfflineAccess = true,
                 AllowedScopes = {"openid", "profile", "auctionApp"},
-                AccessTokenLifetime = 3600*24*30// not recommended for security -- too long time
+                AccessTokenLifetime = 3600*24*30,// not recommended for security -- too long time
+                AlwaysIncludeUserClaimsInIdToken = true, // nextauth.js requires this.
             }
         };
 }
