@@ -45,6 +45,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         options.TokenValidationParameters.NameClaimType = "username";
     });
 
+builder.Services.AddGrpc();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline. (Used to add middleware e.g auth)
@@ -53,7 +55,7 @@ app.UseAuthentication(); // must be before UseAuthorization
 app.UseAuthorization();
 
 app.MapControllers(); // allows framework to map http request to endpoint
-
+app.MapGrpcService<GrpcAuctionService>();
 
 try
 {
