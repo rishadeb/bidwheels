@@ -13,9 +13,18 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         options.TokenValidationParameters.ValidateAudience = false;
         options.TokenValidationParameters.NameClaimType = "username";
     });
+builder.Services.AddCors(options => {
+    options.AddPolicy("customPolicy", b => {
+        b.AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials()
+            .WithOrigins(builder.Configuration["ClientApp"]);
+    });
+});
 
 var app = builder.Build();
 
+app.UseCors(); // used for notification service connection to client
 app.MapReverseProxy();
 
 app.UseAuthentication();
