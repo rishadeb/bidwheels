@@ -30,7 +30,6 @@ export default function BidItem({bid}: Props) {
         }
         return {bgColor, text};
     }
-    console.log(bid.bidTime);
     return (
         <div className={`
             border-gray-300 border-2 px-3 py-2 rounded-lg
