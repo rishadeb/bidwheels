@@ -14,7 +14,7 @@ COPY src/NotificationService/NotificationService.csproj src/NotificationService/
 COPY src/Contracts/Contracts.csproj src/Contracts/Contracts.csproj
 
 COPY tests/AuctionService.UnitTests/AuctionService.UnitTests.csproj tests/AuctionService.UnitTests/AuctionService.UnitTests.csproj
-
+COPY tests/AuctionService.IntegrationTests/AuctionService.IntegrationTests.csproj tests/AuctionService.IntegrationTests/AuctionService.IntegrationTests.csproj
 # Restore package deps
 RUN dotnet restore bidwheels.sln
 
